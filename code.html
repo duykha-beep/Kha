@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shop Phần mềm hỗ trợ chơi game - Đăng nhập</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    min-height: 100vh;
+  }
+  .gradient-text {
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  .banner-account {
+    background: linear-gradient(90deg, #2563eb, #9333ea);
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  /* Hide sections by default */
+  #product-section, #banner-account {
+    display: none;
+  }
+  /* Scrollbar style for product list */
+  .product-list {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+</style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+<!-- Header with banner account after login -->
+<header class="bg-slate-900 shadow-lg fixed w-full z-50 top-0">
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold gradient-text select-none cursor-default">Game Software Shop</h1>
+    <div id="banner-account" class="banner-account">
+      <span>Xin chào, <span id="account-username"></span>!</span>
+      <button id="logout-button" class="bg-red-600 hover:bg-red-700 transition rounded px-3 py-1 text-white font-semibold text-sm">Đăng xuất</button>
+    </div>
+  </div>
+</header>
+
+<main class="flex-grow pt-24 container mx-auto px-4 max-w-4xl">
+
+  <!-- LOGIN & REGISTER SECTION -->
+  <section id="auth-section" class="max-w-md mx-auto bg-slate-800 p-8 rounded-xl shadow-lg">
+    <h2 class="text-white text-3xl font-semibold mb-6 text-center">Đăng nhập / Đăng ký</h2>
+    <div id="auth-message" class="text-red-400 mb-4 text-center"></div>
+
+    <div id="form-login" class="">
+      <input type="text" id="login-username" placeholder="Tên đăng nhập" class="w-full rounded-md p-3 mb-4 bg-slate-700 border border-slate-600 text-white focus:outline-none" />
+      <input type="password" id="login-password" placeholder="Mật khẩu" class="w-full rounded-md p-3 mb-6 bg-slate-700 border border-slate-600 text-white focus:outline-none" />
+      <button onclick="login()" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 py-3 rounded-lg font-semibold hover:opacity-90 transition text-white mb-3">Đăng nhập</button>
+      <p class="text-center text-gray-400 text-sm">Chưa có tài khoản? <button onclick="showRegister()" class="text-blue-400 hover:underline">Đăng ký ngay</button></p>
+    </div>
+
+    <div id="form-register" class="hidden">
+      <input type="text" id="register-username" placeholder="Tên đăng nhập" class="w-full rounded-md p-3 mb-4 bg-slate-700 border border-slate-600 text-white focus:outline-none" />
+      <input type="password" id="register-password" placeholder="Mật khẩu" class="w-full rounded-md p-3 mb-6 bg-slate-700 border border-slate-600 text-white focus:outline-none" />
+      <button onclick="register()" class="w-full bg-gradient-to-r from-purple-600 to-blue-500 py-3 rounded-lg font-semibold hover:opacity-90 transition text-white mb-3">Đăng ký</button>
+      <p class="text-center text-gray-400 text-sm">Đã có tài khoản? <button onclick="showLogin()" class="text-blue-400 hover:underline">Đăng nhập</button></p>
+    </div>
+  </section>
+
+  <!-- PRODUCT SECTION -->
+  <section id="product-section" class="mt-10">
+    <!-- Banner account is in header -->
+    <h2 class="text-white text-3xl font-semibold mb-6 text-center">Danh sách phần mềm hỗ trợ chơi game</h2>
+    <div class="product-list grid grid-cols-1 sm:grid-cols-2 gap-6 max-h-[400px] overflow-y-auto px-4">
+      <!-- Example products -->
+      <div class="bg-slate-700 rounded-xl p-5 shadow-lg hover:shadow-blue-500/50 transition cursor-pointer product-card" onclick="alert('Thêm vào giỏ hàng!')">
+        <h3 class="text-xl font-bold text-white mb-2">RegeditPro - Tăng FPS ultra</h3>
+        <p class="text-gray-300 mb-4">Tối ưu hệ thống giúp tăng tốc FPS, giảm giật lag khi chơi game FPS.</p>
+        <p class="font-semibold text-blue-400">Giá: 199.000 VND</p>
+      </div>
+      <div class="bg-slate-700 rounded-xl p-5 shadow-lg hover:shadow-purple-500/50 transition cursor-pointer product-card" onclick="alert('Thêm vào giỏ hàng!')">
+        <h3 class="text-xl font-bold text-white mb-2">NetOptPro - Giảm Ping tối đa</h3>
+        <p class="text-gray-300 mb-4">Tối ưu mạng giúp giảm độ trễ, ping thấp, chơi game online mượt mà hơn.</p>
+        <p class="font-semibold text-purple-400">Giá: 149.000 VND</p>
+      </div>
+      <div class="bg-slate-700 rounded-xl p-5 shadow-lg hover:shadow-green-500/50 transition cursor-pointer product-card" onclick="alert('Thêm vào giỏ hàng!')">
+        <h3 class="text-xl font-bold text-white mb-2">HackShield - Chống hack thần thánh</h3>
+        <p class="text-gray-300 mb-4">Phần mềm phát hiện và ngăn chặn phần mềm gian lận bảo vệ môi trường game công bằng.</p>
+        <p class="font-semibold text-green-400">Giá: 299.000 VND</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // Load users from localStorage or initialize empty object
+  let users = JSON.parse(localStorage.getItem('gameShopUsers')) || {};
+  // Logged in user
+  let loggedInUser = localStorage.getItem('gameShopLoggedInUser') || null;
+
+  // Elements
+  const authSection = document.getElementById('auth-section');
+  const productSection = document.getElementById('product-section');
+  const bannerAccount = document.getElementById('banner-account');
+  const accountUsernameSpan = document.getElementById('account-username');
+  const authMessage = document.getElementById('auth-message');
+
+  const formLogin = document.getElementById('form-login');
+  const formRegister = document.getElementById('form-register');
+
+  // Show register form
+  function showRegister() {
+    formLogin.classList.add('hidden');
+    formRegister.classList.remove('hidden');
+    authMessage.textContent = '';
+  }
+  // Show login form
+  function showLogin() {
+    formRegister.classList.add('hidden');
+    formLogin.classList.remove('hidden');
+    authMessage.textContent = '';
+  }
+
+  // Handle registration
+  function register() {
+    const username = document.getElementById('register-username').value.trim();
+    const password = document.getElementById('register-password').value.trim();
+
+    if (username.length < 3) {
+      authMessage.textContent = 'Tên đăng nhập phải từ 3 ký tự trở lên.';
+      return;
+    }
+    if (password.length < 6) {
+      authMessage.textContent = 'Mật khẩu phải từ 6 ký tự trở lên.';
+      return;
+    }
+    if (users[username]) {
+      authMessage.textContent = 'Tên đăng nhập đã tồn tại.';
+      return;
+    }
+
+    users[username] = password;
+    localStorage.setItem('gameShopUsers', JSON.stringify(users));
+    authMessage.style.color = '#34d399'; // green
+    authMessage.textContent = 'Đăng ký thành công! Bạn có thể đăng nhập ngay.';
+    // Clear inputs
+    document.getElementById('register-username').value = '';
+    document.getElementById('register-password').value = '';
+
+    setTimeout(() => {
+      showLogin();
+      authMessage.textContent = '';
+      authMessage.style.color = '#f87171'; // reset red
+    }, 2500);
+  }
+
+  // Handle login
+  function login() {
+    const username = document.getElementById('login-username').value.trim();
+    const password = document.getElementById('login-password').value.trim();
+
+    if (!users[username] || users[username] !== password) {
+      authMessage.style.color = '#f87171'; // red
+      authMessage.textContent = 'Sai tài khoản hoặc mật khẩu!';
+      return;
+    }
+
+    loggedInUser = username;
+    localStorage.setItem('gameShopLoggedInUser', loggedInUser);
+    authMessage.textContent = '';
+    showProductPage();
+  }
+
+  // Show product section and banner, hide auth section
+  function showProductPage() {
+    authSection.style.display = 'none';
+    productSection.style.display = 'block';
+    bannerAccount.style.display = 'flex';
+    accountUsernameSpan.textContent = loggedInUser;
+  }
+
+  // Log out
+  document.getElementById('logout-button').addEventListener('click', () => {
+    loggedInUser = null;
+    localStorage.removeItem('gameShopLoggedInUser');
+    bannerAccount.style.display = 'none';
+    productSection.style.display = 'none';
+    authSection.style.display = 'block';
+  });
+
+  // On load check login state
+  window.addEventListener('load', () => {
+    if (loggedInUser) {
+      showProductPage();
+    } else {
+      bannerAccount.style.display = 'none';
+      productSection.style.display = 'none';
+      authSection.style.display = 'block';
+    }
+  });
+</script>
+
+</body>
+</html>
+
